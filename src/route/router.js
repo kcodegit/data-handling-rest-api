@@ -1,7 +1,6 @@
 'use strict';
 
 // imports
-const err_handler = require('../core/middleware/error_handler');
 const errs = require('restify-errors');
 const get_data = require('../model/response/get_data');
 const post_data = require('../model/response/post_data');
@@ -21,5 +20,5 @@ exports.handle = server => {
     server.get('data', get_data.validate, get_data.handle);
     server.post('data', get_data.validate, get_data.handle);
 
-    err_handler.handle(server);
+
 }

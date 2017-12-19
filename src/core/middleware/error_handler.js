@@ -2,13 +2,13 @@
 
 // imports
 
-exports.handle = server => {
-    server.on('NotFound', (req, res, err, cb) => {
+exports = module.exports = {
+    notFound : (req, res, err, cb) => {
         console.log('not found error test!')
         return cb();
-    });
-    server.on('InternalServer', (req, res, err, cb) => {
+    },
+    internalServer : (req, res, err, cb) => {
         console.log('internal server error test!');
         return cb()
-    });
+    }
 }
