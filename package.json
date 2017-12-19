@@ -1,0 +1,24 @@
+{
+  "name": "dhra",
+  "version": "1.0.0",
+  "description": "Restify test data handling app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcodegit/data-handling-rest-api.git"
+  },
+  "author": "Kohei Ando",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcodegit/data-handling-rest-api/issues"
+  },
+  "homepage": "https://github.com/kcodegit/data-handling-rest-api#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "restify": "^6.3.4"
+  }
+}
