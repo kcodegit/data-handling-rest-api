@@ -15,6 +15,21 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
+  db.createTable('user',{
+    id: {
+      type: 'int',
+      primaryKey: true,
+      autoIncrement : true
+    },
+    user_name: {
+      type: 'string',
+      allowNull: false
+    },
+    age: {
+      type: 'int',
+      allowNull: false
+    }
+  });
   return null;
 };
 
