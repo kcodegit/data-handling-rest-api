@@ -1,0 +1,13 @@
+{
+    "db": {
+        "master": {
+            "host": "localhost",
+            "user": "root",
+            "password": "password",
+            "database": "dhra",
+            "port": 3306,
+            "ssl": false,
+            "connectTimeout": 30000
+        }
+    }
+}
