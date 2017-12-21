@@ -3,6 +3,7 @@
 // imports
 const restify = require('restify');
 
+server.use(restify.plugins.jsonBodyParser());
 var server = restify.createServer();
 
 server.listen(8080, function() {
