@@ -9,5 +9,15 @@
             "ssl": false,
             "connectTimeout": 30000
         }
+    },
+    "server": {
+        "BASE_URI": "0.0.0.0",
+        "PORT": 8080,
+        "KEY_PATH": "",
+        "CERT_PATH": ""
+    },
+    "redis": {
+        "host": "",
+        "port": 6379
     }
 }

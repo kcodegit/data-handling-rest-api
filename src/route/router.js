@@ -1,22 +1,21 @@
 'use strict';
 
-// imports
-const errs = require('restify-errors');
-const get_data = require('../model/response/get_data');
-const post_data = require('../model/response/post_data');
-const delete_data = require('../model/response/delete_data');
+// imports and vars
+var errs = require('restify-errors'),
+  get_data = require('../core/middleware/response/get_data'),
+  post_data = require('../core/middleware/response/post_data'),
+  delete_data = require('../core/middleware/response/delete_data'),
+  p = console.log;
 
 /**
- * 
- * @param { RestifyServer } server 
+ * routes setup
+ * @param { Server } server 
  */
-exports.handle = server => {
-    server.use((req, res, next) => { console.log('HIT!'); return next(); })
+exports.setUp = function(server){
+    server.get('healthCheck', (req, res, next) => res.send(200, { msg: 'I am healthy.' }))
 
     server.get('data', get_data.validate, get_data.handle);
     server.post('data', post_data.validate, post_data.handle);
     server.del('data', delete_data.validate, delete_data.handle);
-    
-    server.get('/500test',(req, res, next) => { return next(new errs.InternalServerError('Internal Server error test!!!'))});
-    server.get('/400test',(req, res, next) => { return next(new errs.BadRequestError('Bad Request error test!!!'))});
+
 }

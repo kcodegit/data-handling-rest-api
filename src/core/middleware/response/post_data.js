@@ -1,7 +1,6 @@
 'use strict';
 
 // imports
-const DB_Client = require('../../database/index');
 
 exports.validate = (req, res, next) => {
     console.log(req.path(), 'its valid! Yoo Hoo!');

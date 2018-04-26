@@ -1,14 +1,19 @@
 'use strict'
 
 // imports
-const server = require('./core/server/server');
-const router = require('./route/router');
-const EH = require('./core/middleware/error_handler');
+var router = require('./route/router'),
+  eh = require('./core/middleware/error_handler'),
+  p = console.log;
 
-// routing
-router.handle(server);
-    
-// error handling
-server.on('BadRequest', EH.badRequest);
-server.on('NotFound', EH.notFound);
-server.on('InternalServer', EH.internalServer);
+/**
+ * set up the app
+ * @param { Server } server 
+ * @returns { Server }
+ */
+exports.setUp = function(server){
+  // routing
+  router.setUp(server);
+  // error handling
+  eh.setUp(server);
+  return server;
+}
