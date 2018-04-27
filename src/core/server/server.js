@@ -100,7 +100,7 @@ function launch(){
 /**
  * forks a bunch of workers
  */
-function crusterItUp(){
+function clusterItUp(){
   if(cluster.isMaster){
     for(let i = 0; i < cpus; i++){
       p('Forking...');
@@ -121,5 +121,5 @@ function crusterItUp(){
  */
 (function(){
   validateArgs();
-  args.cluster ? crusterItUp() : launch();
+  args.cluster ? clusterItUp() : launch();
 })();
