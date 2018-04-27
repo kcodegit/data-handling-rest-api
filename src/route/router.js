@@ -13,7 +13,6 @@ var errs = require('restify-errors'),
  */
 exports.setUp = function(server){
     server.get('healthCheck', (req, res, next) => res.send(200, { msg: 'I am healthy.' }))
-
     server.get('data', get_data.validate, get_data.handle);
     server.post('data', post_data.validate, post_data.handle);
     server.del('data', delete_data.validate, delete_data.handle);

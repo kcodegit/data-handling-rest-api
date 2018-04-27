@@ -1,6 +1,7 @@
 'use strict';
 
 // imports
+p = console.log;
 
 exports.setUp = function(server){
   server.on('BadRequest', _handler.badRequest);
@@ -10,15 +11,15 @@ exports.setUp = function(server){
 
 var _handler = {
     badRequest : (req, res, err, cb) => {
-        console.log('Bad Request error test!')
+        p('Bad Request error!')
         return cb();
     },
     notFound : (req, res, err, cb) => {
-        console.log('not found error test!')
+        p('not found error!')
         return cb();
     },
     internalServer : (req, res, err, cb) => {
-        console.log('internal server error test!');
+        p('internal server error!');
         return cb()
     }
 }

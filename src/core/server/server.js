@@ -6,8 +6,8 @@
 
 // args options
 const options = [
-  { name: ['s', 'server'], description: 'Server type. http or https.', defaultValue: 'http'},
-  { name: ['c', 'cluster'], description: 'cluster or not.', defaultValue: false }
+  { name: 'https', alias: 's', type: Boolean },
+  { name: 'cluster', alias: 'c', type: Boolean }
 ]
 
 // imports and vars
@@ -19,18 +19,8 @@ var restify = require('restify'),
   ENV = process.env.NODE_ENV,
   cpus = require('os').cpus().length,
   fs_promised = require('../../util/fs_promised'),
-  args = require('args').options(options).parse(process.argv),
+  args = require('command-line-args')(options),
   p = console.log;
-
-
-/**
- * validates the arguments
- */
-function validateArgs(){
-  var _throw = s => { throw new Error('Invalid Arguments. ' + s) }
-  if(typeof args.cluster !== 'boolean') _throw('--cluster needs to be true/false.');
-  if(!['http', 'https'].some(e => args.server)) _throw('--server needs to be http or https.');
-}
 
 /**
  * creates a http server
@@ -57,8 +47,8 @@ function https(){
  * @param { string } option 
  * @returns { Promise<Server> }
  */
-function makeServer(option){
-  return option === 'https' ? https() : http()
+function makeServer(is_https){
+  return is_https ? https() : http()
 }
 
 /**
@@ -87,7 +77,7 @@ function listen(sv){
  * launches a server
  */
 function launch(){
-  makeServer(args.server)
+  makeServer(args.https)
     .then(sv => setPlugins(sv))
     .then(sv => app.setUp(sv))
     .then(sv => listen(sv))
@@ -120,6 +110,5 @@ function clusterItUp(){
  * entrance point
  */
 (function(){
-  validateArgs();
   args.cluster ? clusterItUp() : launch();
 })();
