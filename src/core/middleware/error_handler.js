@@ -1,7 +1,7 @@
 'use strict';
 
 // imports
-p = console.log;
+var p = console.log;
 
 exports.setUp = function(server){
   server.on('BadRequest', _handler.badRequest);
